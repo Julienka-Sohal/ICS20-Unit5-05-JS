@@ -48,7 +48,7 @@ function myButtonClicked() {
     if (angleA == angleB && angleA == angleC) {
       document.getElementById("triangles").innerHTML =
         "This is an equilateral triangle!"
-    } else if (angleA == angleB || angleB == angleC) {
+    } else if (angleA == angleB || angleB == angleC || angleC == angleA) {
       document.getElementById("triangles").innerHTML =
         "This is an isosceles triangle!"
     } else {
