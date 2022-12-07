@@ -10,25 +10,38 @@
  * Check servie worker.
  */
 if (navigator.serviceWorker) {
-  navigator.serviceWorker.register("/ICS2O-Unit5-04-JS/sw.js", {
-    scope: "/ICS2O-Unit5-04-JS/",
+  navigator.serviceWorker.register("/ICS20-Unit5-05-JS/sw.js", {
+    scope: "/ICS20-Unit5-05-JS/",
   })
 }
 
 //process
 function myButtonClicked() {
-  const day = document.getElementById("week").value
-  const typeAge = document.getElementById("typeAge").value
+  const lengthA = document.getElementById("lengthOne").value
+  const lengthB = document.getElementById("lengthTwo").value
+  const lengthC = document.getElementById("lengthThree").value
+  
+  // using the cosine law
+  const angleA = Math.acos((lengthB**2 + lengthC**2 - lengthA**2) / (2 * lengthB * lengthC)) * (180/Math.PI)
+  const angleB = Math.acos((lengthC**2 + lengthA**2 - lengthB**2) / (2 * lengthC * lengthA)) * (180/Math.PI)
+  const angleC = Math.acos((lengthA**2 + lengthB**2 - lengthC**2) / (2 * lengthA * lengthB)) * (180/Math.PI)
 
-  if (
-    day == "Tuesday" ||
-    day == "Thursday" ||
-    (typeAge >= 12 && typeAge <= 25)
-  ) {
-    document.getElementById("weekday-discount").innerHTML =
-      "You are eligible to get a discount!"
+  //180 or not?
+  const sumOfAngles = Number((angleA).toFixed(2)) + Number((angleB).toFixed(2)) + Number((angleC).toFixed(2))
+
+  if (sumOfAngles == 180) {
+    if (angleA == angleB && angleA == angleC) {
+      document.getElementById("triangles").innerHTML =
+        "This is an equilateral triangle!"
+    } else if (angleA == angleB || angleB == angleC) {
+      document.getElementById("triangles").innerHTML =
+        "This is an isosceles triangle!"
+    } else {
+      document.getElementById("triangles").innerHTML =
+        "This is an scalene triangle!"
+    }
   } else {
-    document.getElementById("weekday-discount").innerHTML =
-      "You are not eligible to get a discount..."
+    document.getElementById("triangles").innerHTML =
+      "This is not a triangle?!"
   }
 }
