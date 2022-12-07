@@ -20,14 +20,29 @@ function myButtonClicked() {
   const lengthA = document.getElementById("lengthOne").value
   const lengthB = document.getElementById("lengthTwo").value
   const lengthC = document.getElementById("lengthThree").value
-  
+
   // using the cosine law
-  const angleA = Math.acos((lengthB**2 + lengthC**2 - lengthA**2) / (2 * lengthB * lengthC)) * (180/Math.PI)
-  const angleB = Math.acos((lengthC**2 + lengthA**2 - lengthB**2) / (2 * lengthC * lengthA)) * (180/Math.PI)
-  const angleC = Math.acos((lengthA**2 + lengthB**2 - lengthC**2) / (2 * lengthA * lengthB)) * (180/Math.PI)
+  const angleA =
+    Math.acos(
+      (lengthB ** 2 + lengthC ** 2 - lengthA ** 2) / (2 * lengthB * lengthC)
+    ) *
+    (180 / Math.PI)
+  const angleB =
+    Math.acos(
+      (lengthC ** 2 + lengthA ** 2 - lengthB ** 2) / (2 * lengthC * lengthA)
+    ) *
+    (180 / Math.PI)
+  const angleC =
+    Math.acos(
+      (lengthA ** 2 + lengthB ** 2 - lengthC ** 2) / (2 * lengthA * lengthB)
+    ) *
+    (180 / Math.PI)
 
   //180 or not?
-  const sumOfAngles = Number((angleA).toFixed(2)) + Number((angleB).toFixed(2)) + Number((angleC).toFixed(2))
+  const sumOfAngles =
+    Number(angleA.toFixed(2)) +
+    Number(angleB.toFixed(2)) +
+    Number(angleC.toFixed(2))
 
   if (sumOfAngles == 180) {
     if (angleA == angleB && angleA == angleC) {
@@ -41,7 +56,6 @@ function myButtonClicked() {
         "This is an scalene triangle!"
     }
   } else {
-    document.getElementById("triangles").innerHTML =
-      "This is not a triangle?!"
+    document.getElementById("triangles").innerHTML = "This is not a triangle?!"
   }
 }
